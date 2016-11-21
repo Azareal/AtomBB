@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!--
+	AtomBB Sample Plugin: Hello World
+	Created by Azareal.
+	Licensed under the terms of the GPLv3.
+	Copyright Azareal and the AtomBB Group (c) 2013.
+-->
+<root>
+	<general>
+		<name>helloworld</name>
+		<title>Hello World</title>
+		<desc>The classic Hello World plugin which outputs the phrase via the notice system.</desc>
+		<author>Azareal</author>
+		<version>0.0.0</version>
+	</general>
+</root>

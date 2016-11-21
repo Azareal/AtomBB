@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<root>
+	<general>
+		<thumbnail height='24' width='24'>thumb-10a1.png</thumbnail>
+		<name>slate</name>
+		<fname>Slate</fname>
+		<author>Azareal</author>
+		<version>1.0alpha1</version>
+		<desc>The default theme which is packaged in AtomBB 1.0</desc>
+	</general>
+</root>

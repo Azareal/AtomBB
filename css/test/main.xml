@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<root>
+	<general>
+		<thumbnail height='24' width='24'>thumb-10a1.png</thumbnail>
+		<name>test</name>
+		<fname>Test</fname>
+		<author>Azareal</author>
+		<version>1.0alpha1</version>
+		<desc>Testing!</desc>
+	</general>
+</root>

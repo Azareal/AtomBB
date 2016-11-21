@@ -1,0 +1,152 @@
+/*
+	AtomBB Profile Stylesheet.
+	Created by Azareal.
+	Licensed under the terms of the GPLv3.
+	Copyright Azareal and AtomBB (c) 2012 - 2014.
+*/
+
+.profile_zone #main
+{
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.profile_zone .content { padding: 8px; }
+.profile_zone .stat_label { font-size: 14px; }
+
+.profile_zone #right_pane { float: right; }
+.profile_zone .left_pane
+{
+	width: 112px;
+	margin-bottom: 5px;
+}
+
+.profile_zone .mini_options
+{
+	width: 118px;
+	padding-left: 7px !important;
+	padding-right: 0px !important;
+}
+
+.profile_zone .stat_table { font-size: 12px; }
+
+.profile_zone #left_holder
+{
+	float: left;
+	width: 128px;
+	box-sizing: border-box;
+}
+
+.profile_zone #avatar_holder
+{
+	padding: 0px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	width: 128px;
+}
+
+.profile_zone .commentBlock
+{
+	float: left;
+	padding-left: 12px;
+}
+.profile_zone #commentList { width: 100px; }
+
+@media (max-width: 464px)
+{
+	.profile_zone #left_holder
+	{
+		float: none;
+		width: 100%;
+	}
+	
+	.profile_zone #avatar_holder { float: left; }
+	.profile_zone .left_pane { float: left; }
+	.profile_zone #friendList { display: none; }
+	
+	.profile_zone .commentBlock
+	{
+		float: left;
+		width: 100%;
+	}
+	
+	.profile_zone #commentList { width: 100%; }
+	.profile_zone #right_pane { display: none; }
+}
+
+@media (min-width: 465px) and (max-width: 534px)
+{
+	.profile_zone #commentList { width: 300px; }
+	.profile_zone #right_pane { display: none; }
+}
+
+@media (min-width: 535px) and (max-width: 799px)
+{
+	.profile_zone #commentList { width: 365px; }
+	.profile_zone #right_pane { display: none; }
+}
+
+@media (min-width: 800px) and (max-width: 1023px)
+{
+	.profile_zone #commentList { width: 600px; }
+	.profile_zone #right_pane { display: none; }
+}
+
+@media (min-width: 1024px) and (max-width: 1602px)
+{
+	.profile_zone .commentBlock { width: 550px; }
+	.profile_zone #commentList { width: 100%; }
+	
+	.profile_zone #main
+	{
+		width: 980px;
+		margin-left: 10px;
+		margin-top: 5px;
+	}
+}
+
+@media (min-width: 1603px)
+{
+	.profile_zone .commentBlock { width: 1110px; }
+	.profile_zone #commentList { width: 100%; }
+	
+	.profile_zone #main
+	{
+		width: 1530px;
+		margin-left: 10px;
+		margin-top: 5px;
+	}
+}
+
+.profile_zone .profile_avatar
+{
+	max-height: 128px;
+	width: 128px;
+	padding-bottom: 5px;
+}
+
+.profile_zone .profile_usertitle
+{
+	display:block;
+	width: 128px;
+	margin-left: 5px;
+	margin-right: 5px;
+	/*margin-bottom: 3px;
+	margin-top: 0px;
+	/*border-bottom: 1px solid lightgray;
+	padding: 0px;
+	padding-bottom: 5px;*/
+}
+
+/*
+.profile_holder:after
+{
+	float: left;
+	width: 50%;
+}
+
+.profile_top
+{
+	float: left;
+	width: 50%;
+}*/
