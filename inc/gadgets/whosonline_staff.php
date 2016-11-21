@@ -53,11 +53,7 @@ function gadget_whosonline_staff()
 				$avatarHeight = $user['avatarHeight'];
 				$avatarWidth = $user['avatarWidth'];
 			}
-			/*if($detail)
-			{
-				$list .= "<a href='".get_profile_link($user['uid'])."'><img src='{$avatar}' /></a><span style='float: left;'></span><br />";
-			}
-			else */
+			
 			$umarkup = markup($user['displayname'], $user['style_start'], $user['style_end'], $user['is_multi_colour']);
 			$list .= "<a title='{$user['displayname']}' href='".get_profile_link($user['uid'])."'>
 				<img src='{$avatar}' width='{$avatarWidth}' />
