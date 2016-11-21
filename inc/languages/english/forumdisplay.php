@@ -3,7 +3,7 @@
 	AtomBB Forumdisplay Language File
 	Created by Azareal.
 	Licensed under the terms of the GPLv3.
-	Copyright Azareal and AtomBB (c) 2012 - 2013.
+	Copyright Azareal (c) 2012 - 2017.
 */
 
 // Is someone trying to access this directly?

@@ -16,26 +16,26 @@ $config['hpath'] = dirname(dirname(__FILE__))."/hadron";
 $config['database_engine'] = "mysqli";
 
 // The host for the database.
-$config['database_host'] = "::1";
+$config['database_host'] = "localhost";
 
 // The username for the user accessing the database
-$config['database_username'] = "root";
+$config['database_username'] = "hadron_user";
 
 // The password for the user accessing the database
-$config['database_password'] = "";
+$config['database_password'] = "%hy%opy%\$u45thr";
 
 // What database are we using?
-$config['database_name'] = "atom";
+$config['database_name'] = "atombb";
 
 // What prefix is this installation using for tables?
-$config['table_prefix'] = "atombb_";
+$config['table_prefix'] = "";
 
 // What language are we using?
 $config['site_language'] = "english";
 
-// Where's the Control Panel?
+// Where's the adminCP?
 $config['admin_dir'] = "panel";
 
 // Who's the big boss?
-//$config['founder'] = "Admin";
+//\$config['founder'] = "Admin";
 $config['founder'] = 1;
