@@ -1,0 +1,134 @@
+/*
+	AtomBB Installer Main Stylesheet.
+	Created by Azareal.
+	Licensed under the terms of the GPLv3.
+	Copyright Azareal and AtomBB (c) 2013.
+*/
+
+h1
+{
+	text-shadow: 0 1px 0 black;
+	color: darkgray;
+	height: 70px;
+	margin-top: 18px;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+body
+{
+	color: #003F87;
+	background-color: #C9C0BB;
+}
+
+#header2
+{
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-bottom: 10px;
+	width: 500px;
+	height: 80px;
+	background-color: silver;
+	text-align: center;
+	background-image: url("../../images/atombb-small.png");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 80px;
+	border: 1px solid darkgray;
+	border-radius: 8px;
+}
+
+#nav
+{
+	width: 70%;
+	min-width: 300px;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+.currentNav
+{
+	float: left;
+	border: 1px solid #00EEEE;
+	background: lightgray;
+	border: 1px solid #B0B0B0;
+	border-radius: 5px;
+	/*box-shadow: 5px 5px 10px #333333;*/
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	padding: 5px;
+	height: 20px;
+	text-align: center;
+}
+
+.sNav
+{
+	float: left;
+	border: 1px solid #3232ff;
+	background: #b2b2ff;
+	border-radius: 5px;
+	/*box-shadow: 5px 5px 10px #333333;*/
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	padding: 5px;
+	height: 20px;
+	text-align: center;
+}
+
+.doneNav
+{
+	float: left;
+	border: 1px solid #308014;
+	background: #accca1;
+	border-radius: 5px;
+	/*box-shadow: 5px 5px 10px #333333;*/
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 8px;
+	padding: 5px;
+	height: 20px;
+	text-align: center;
+}
+
+.content
+{
+	background: lightgray;
+	border: 1px solid #B0B0B0;
+	/*background: url("../images/texture.png"), darkcyan;*/
+	border-radius: 7px;
+	/*box-shadow: 10px 10px 20px black;*/
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 25px;
+	padding-right: 25px;
+	margin-bottom: 10px;
+	/*text-align: center;*/
+}
+
+#main
+{
+	width: 70%;
+	min-width: 300px;
+	margin-top: 30px;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+#footer
+{
+	background: lightgray;
+	margin: 0px auto;
+	margin-top: 20px;
+	padding: 3px;
+	border: 1px solid #B0B0B0;
+	/*background: url("../images/texture.png"), darkcyan;*/
+	border-radius: 5px;
+	width: 300px;
+	/*box-shadow: 10px 10px 20px black;*/
+	text-align: center;
+}
