@@ -16,16 +16,9 @@ function gadget_organization_staff()
 	
 	foreach($staves as $staff)
 	{
-		if(empty($staff['avatar']))
-		{
-			$user_avatar = "//{$main->settings['site_url']}/images/no-avatar.png";
-			$user_avatar_height = 48;
-			$user_avatar_width = 48;
-		} else {
-			$user_avatar = str_replace('{SITE_URL}',"//".$main->settings['site_url'], $staff['avatar']);
-			$user_avatar_height = $staff['avatarHeight'];
-			$user_avatar_width = $staff['avatarWidth'];
-		}
+		$user_avatar = getAvatar($staff);
+		$user_avatar_height = $staff['avatarHeight'];
+		$user_avatar_width = $staff['avatarWidth'];
 		
 		$smarkup = markup($staff['displayname'], $staff['style_start'], $staff['style_end'], $staff['is_multi_colour']);
 		$ulink = get_profile_link($staff['uid']);

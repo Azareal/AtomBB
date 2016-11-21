@@ -43,16 +43,9 @@ function gadget_whosonline_staff()
 		$last = count($wol);
 		foreach($wol as $user)
 		{
-			if(empty($user['avatar']))
-			{
-				$avatar = "//{$main->settings['site_url']}/images/no-avatar.png";
-				$avatarHeight = 48;
-				$avatarWidth = 48;
-			} else {
-				$avatar = str_replace('{SITE_URL}',"//".$main->settings['site_url'], $user['avatar']);
-				$avatarHeight = $user['avatarHeight'];
-				$avatarWidth = $user['avatarWidth'];
-			}
+			$avatar = getAvatar($user);
+			$avatarHeight = $user['avatarHeight'];
+			$avatarWidth = $user['avatarWidth'];
 			
 			$umarkup = markup($user['displayname'], $user['style_start'], $user['style_end'], $user['is_multi_colour']);
 			$list .= "<a title='{$user['displayname']}' href='".get_profile_link($user['uid'])."'>
