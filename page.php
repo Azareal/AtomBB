@@ -3,7 +3,7 @@
 	AtomBB Special Page
 	Created by Azareal.
 	Licensed under the terms of the GPLv3.
-	Copyright Azareal (c) 2013 - 2014.
+	Copyright Azareal (c) 2013 - 2017.
 */
 
 // Define this for security purposes..
@@ -17,4 +17,6 @@ if(!isset($_GET['area'])) die($error->getError(404));
 
 // You can never be too careful..
 $area = $db->sanitise($_GET['area']);
+
+// QUESTION: Does this method work?
 //if(!$plugins->outputPage($area)) die($error->getError(404));

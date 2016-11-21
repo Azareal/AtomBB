@@ -118,3 +118,93 @@ function getLevel($score = 0, $level = 0)
 	$plugins->hook("level_end");
 	return $level;
 }
+
+/**
+*
+*	The purpose of this function is to retrieve the data of the user you specify.
+*	$uid - The ID of the user whose data you wish to fetch.
+*	$group - A boolean value specifying whether to pull group data explicitly.
+*
+**/
+function getUser($uid, $group = false)
+{
+	global $main, $cache, $db;
+	
+	// Grab cached data..
+	$uid = (int)$uid;
+	$cdata = $cache->getUser($uid);
+	
+	// Not have any cached data?
+	if(!$cdata) {
+		if($group) {
+			if($main->settings['cache_groups'])
+			{
+				$user = $db->get('*','users',"uid='{$uid}'",1);
+				if(!$user) return false;
+				return array_merge($user, $cache->other['groups'][$user['gid']]);
+			}
+			else
+			{
+				$res = $db->join('*','users','usergroups','gid','gid',"users.uid='{$uid}'",1);
+				if(!$res) return false;
+				list($user, $group) = $cache->splitUserDataByGroup($res);
+				$cache->other['groups'][$user['gid']] = $group;
+			}
+			$cache->addUser($user);
+			return $res;
+		} else $user = $db->get('*','users',"uid='{$uid}'",1);
+		if($user==0) return false;
+		$cache->addUser($user);
+		return $user;
+	}
+	
+	// Do we need the group data and not have it cached?
+	if($group && !isset($cache->others['groups'][$cdata['gid']]))
+	{
+		$group = $db->get('*','usergroups',"gid='{$cdata['gid']}'",1);
+		if($group==0) return false;
+		$cache->other['groups'][$group['gid']] = $group;
+		$user = array_merge($cdata,$group);
+		return $user;
+	}
+	return $cdata;
+}
+
+/**
+*
+*	The purpose of this function is to retrieve the data of the user you specify.
+*	$name - The name of the user whose data you wish to fetch.
+*	$group - A boolean value specifying whether to pull group data explicitly.
+*
+**/
+function getUserByName($name, $group = false)
+{
+	global $cache, $db;
+	$name = $db->sanitise($name);
+	
+	// Grab cached data..
+	$cdata = $cache->getUserByName($name);
+	
+	if($group && $cdata && isset($cache->other['groups'][$cdata['gid']])) return array($cdata, $cache->other['groups'][$cdata['gid']]);
+	elseif($group && $cdata)
+	{
+		$groupData = $db->get('*','usergroups',"gid='{$cdata['gid']}'",1);
+		if($groupData==0) return false;
+		
+		$cache->other['groups'][$cdata['gid']] = $groupData;
+		return array($user, $groupData);
+	}
+	elseif($group)
+	{
+		$res = $db->join('*','users','usergroups','gid','gid',"users.username='{$name}'",1);
+		if($res==0) return false;
+		list($user, $groupData) = $cache->splitUserDataByGroup($res);
+	}
+	else $user = $db->get('*','users',"username='{$name}'",1);
+	if($user==0) return false;
+	
+	$cache->addUser($user);
+	if($group) return array($user, $groupData);
+	else return $user;
+}
+
