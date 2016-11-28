@@ -11,26 +11,26 @@ if(!defined("HADRON_START")) die("You are not allowed to access this file direct
 
 function getAvatar(&$user)
 {
-	global $main
+	global $main, $plugins;
 	if(empty($user['avatar']))
 	{
 		if(($res = $plugins->hook("functions_getAvatar_noavatar", $user))!==null) return $res;
 		
 		$user['avatarHeight'] = min(128,$main->settings['avatar_heightmax']);
 		$user['avatarWidth'] = min(128,$main->settings['avatar_widthmax']);
-		return "//{$main->settings['site_url']}/images/no-avatar.png'";
+		return "//{$main->settings['site_url']}/images/no-avatar.png";
 	}
 	
 	// The new avatar storage format under development
-	elseif($main['avatar'][0]=='.')
+	elseif($user['avatar'][0]=='.')
 	{
-		if(!file_exists(ABB_BASE."/uploads/avatars/{$user['uid']}{$main['avatar']}"))
+		if(!file_exists(ABB_BASE."/uploads/avatars/{$user['uid']}{$user['avatar']}"))
 		{
 			$user['avatarHeight'] = min(128,$main->settings['avatar_heightmax']);
 			$user['avatarWidth'] = min(128,$main->settings['avatar_widthmax']);
 			return "//{$main->settings['site_url']}/images/no-avatar.png'";
 		}
-		return "//{$main->settings['site_url']}/uploads/avatars/{$user['uid']}{$main['avatar']}";
+		return "//{$main->settings['site_url']}/uploads/avatars/{$user['uid']}{$user['avatar']}";
 	}
 	
 	// The old avatar storage format and external avatars
@@ -42,7 +42,7 @@ function get_profile_link($uid)
 	global $main, $plugins;
 	if(($res = $plugins->hook("functions_profiles_get_link", $uid))!==null) return $res;
 	
-	if ($author['uid'] > 0) return "//{$main->settings['site_url']}/profiles/?uid={$uid}";
+	if ($uid > 0) return "//{$main->settings['site_url']}/profiles/?uid={$uid}";
 	else return "#";
 }
 

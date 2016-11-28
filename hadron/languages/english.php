@@ -4,7 +4,7 @@
 *	AtomBB Installer: Language Strings
 *	Created by Azareal.
 *	Licensed under the terms of the GPLv3.
-*	Copyright Azareal and the AtomBB Group (c) 2013.
+*	Copyright Azareal (c) 2013 - 2017
 *
 **/
 

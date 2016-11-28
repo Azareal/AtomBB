@@ -22,10 +22,10 @@ $config['database_host'] = "localhost";
 $config['database_username'] = "root";
 
 // The password for the user accessing the database
-$config['database_password'] = "";
+$config['database_password'] = "password";
 
 // What database are we using?
-$config['database_name'] = "atom";
+$config['database_name'] = "atombb";
 
 // What prefix is this installation using for tables?
 $config['table_prefix'] = "atombb_";

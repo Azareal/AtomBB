@@ -3,7 +3,7 @@
 	AtomBB Global Language File
 	Created by Azareal.
 	Licensed under the terms of the GPLv3.
-	Copyright Azareal (c) 2012 - 2017.
+	Copyright Azareal (c) 2012 - 2017
 */
 
 // Is someone trying to access this directly?
@@ -49,7 +49,7 @@ $l['forums_forum_guest'] = "Guest";
 $l['forums_forum_unknown'] = "Unknown";
 $l['forums_forum_santa'] = "Santa";
 
-// Functions..
+// Functions...
 $l['functions_quote'] = "Quote";
 $l['functions_quote_pid'] = "Quoted PID #$1";
 $l['functions_smilies_smile'] = "Smile";

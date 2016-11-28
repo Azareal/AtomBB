@@ -3,11 +3,11 @@
 	AtomBB Pages
 	Created by Azareal.
 	Licensed under the terms of the GPLv3.
-	Copyright Azareal (c) 2013 - 2017.
+	Copyright Azareal (c) 2013 - 2017
 */
 
 // Supercache..
-if(isset($_GET['ajax']) && $_GET['ajax']==1 && @require_once('./cache/pages/'.htmlentities($_GET['area'].'.html'))) exit;
+if(isset($_GET['ajax']) && $_GET['ajax']==1 && @require_once('./cache/pages/'.preg_replace("/[^[:alnum:][:space:]-\/]/u",'',$_GET['area']).'.html')) exit;
 
 // Define this for security purposes..
 define("HADRON_START",1);

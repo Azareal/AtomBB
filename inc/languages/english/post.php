@@ -42,6 +42,7 @@ $l['post_rep'] = ":cool:";
 $l['post_rep_msg'] = "$1 upvotes";
 $l['post_rep_msg_full'] = "$1 upvotes";
 $l['post_rep_button'] = "Lovin it";
+$l['post_select'] = "Select";
 $l['post_warninglevel'] = "Warnings";
 
 // Default users..

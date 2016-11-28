@@ -18,14 +18,14 @@ function getGadgets($zone)
 	
 	$gdata = array();
 	$both = 0;
-	if($cache->loadCache('global','gadgets',60 * 60 * 24 * 31))
+	if($cache->loadCache('global','gadgets',ONE_MONTH))
 	{
 		$gdata = $cache->get('gadgets');
 		$gdata = $gdata['global'];
 		$both++;
 	}
 	
-	if($cache->loadCache($zone,'gadgets',60 * 60 * 24 * 31))
+	if($cache->loadCache($zone,'gadgets',ONE_MONTH))
 	{
 		$tdata = $cache->get('gadgets');
 		$gdata = array_merge($gdata, $tdata[$zone]);
@@ -46,30 +46,8 @@ function getGadgets($zone)
 		else $glocal[] = $gitem;
 	}
 	
-	// TO-DO: Turn this lambda into a more general purpose caching solution rather than it being specific to the gadget system..
-	$gadgetCache = function($gadgets, $zone)
-	{
-		if(file_exists(ABB_BASE."/cache/gadgets/{$zone}.php")) $handle = @fopen(ABB_BASE."/cache/gadgets/{$zone}.php",'w');
-		else $handle = false;
-		if(!$handle) return;
-		$str = "<?php\n";
-		$str .= "\${$zone} = array();\n";
-		foreach($gadgets as $key => $value)
-		{
-			foreach($value as $fieldName => $fieldData)
-			{
-				$fieldName = str_replace("'","\'",$fieldName);
-				$fieldData = str_replace("'","\'",$fieldData);
-				$str .= "\${$zone}['{$key}']['{$fieldName}'] = '{$fieldData}';\n";
-			}
-		}
-		$str .= "?>";
-		fwrite($handle, $str);
-		fclose($handle);
-	};
-	
-	register_shutdown_function($gadgetCache, $glocal, $zone);
-	register_shutdown_function($gadgetCache, $gglobal,'global');
+	if($glocal!=null) register_shutdown_function(array($cache,'writeCache'),"gadgets_{$zone}", $glocal,"gadgets/{$zone}");
+	if($gglobal!=null) register_shutdown_function(array($cache,'writeCache'),"gadgets_global", $gglobal,"gadgets/global");
 	
 	return $gdata;
 }
