@@ -19,19 +19,19 @@ class Cache
 	protected $main = null;
 	
 	// Users..
-	protected $users = array();
-	protected $gids = array();
+	protected $users = [];
+	protected $gids = [];
 	
 	// Global data..
-	public $data = array();
-	protected $original = array();
+	public $data = [];
+	protected $original = [];
 	
 	// Other caches..
-	public $other = array();
-	protected $oOriginal = array();
+	public $other = [];
+	protected $oOriginal = [];
 	
 	// Speed up finding data in the caches..
-	protected $indexes = array();
+	protected $indexes = [];
 	
 	// Memcached..
 	protected $mcache = null;
@@ -44,7 +44,7 @@ class Cache
 	function __construct(Container $main, array $config)
 	{
 		$this->main = $main;
-		$this->other['groups'] = array();
+		$this->other['groups'] = [];
 		$db = $main->getDatabase();
 		
 		if(isset($config['memcached']) && $mem = $config['memcached'])
@@ -62,19 +62,19 @@ class Cache
 		}
 	}
 	
-	function init(array $user, array $group = array())
+	function init(array $user, array $group = [])
 	{
 		$this->users[$user['uid']] = $user;
-		$this->gids[$user['gid']] = array($user['uid']);
+		$this->gids[$user['gid']] = [$user['uid']];
 		
-		$this->indexes['usernames'] = array();
+		$this->indexes['usernames'] = [];
 		$this->indexes['usernames'][$user['username']] = $user['uid'];
 		
 		if($this->mcache)
 		{
 			$this->mcache->set('user_'.$user['uid'], $user);
 			$this->mcache->set('group_'.$user['gid'], $group);
-			$this->mcache->set('usernames', array($user['username'] => $user['uid']));
+			$this->mcache->set('usernames', [$user['username'] => $user['uid']]);
 		}
 	}
 	
@@ -135,7 +135,7 @@ class Cache
 		if($this->mcache)
 		{
 			$this->mcache->set('user_'.$user['uid'], $user);
-			if(!$unames = $this->mcache->get('usernames')) $unames = array();
+			if(!$unames = $this->mcache->get('usernames')) $unames = [];
 			$unames[$user['username']] = $user['uid'];
 			$this->mcache->set('usernames', $unames);
 			if($group!=null) $this->mcache->add('group_'.$user['gid'], $group);
@@ -144,12 +144,12 @@ class Cache
 	
 	function addUsers(array $users, $shutdown = false)
 	{
-		if(isset($users['uid'])) $users = array($users);
+		if(isset($users['uid'])) $users = [$users];
 		
 		foreach($users as $user)
 		{
 			list($udata, $gdata) = $this->splitUserDataByGroup($user);
-			if(!$shutdown) register_shutdown_function(array($this,'addUser'), $udata, $gdata);
+			if(!$shutdown) register_shutdown_function([$this,'addUser'], $udata, $gdata);
 			else addUser($udata, $gdata);
 		}
 	}
@@ -171,7 +171,7 @@ class Cache
 	{
 		$user = array_diff_key($data, $this->main->settings['groupSchema']);
 		$group = array_intersect_key($data, $this->main->settings['groupSchema']);
-		return array($user, $group);
+		return [$user,$group];
 	}
 	
 	/**
@@ -213,8 +213,8 @@ class Cache
 	
 	function getUsersInBulk(array $ids, $group = false)
 	{
-		$result = array();
-		$groups = array();
+		$result = [];
+		$groups = [];
 		
 		// Anything in memory..?
 		$source = array_intersect_key(array_flip($ids), $this->users);
@@ -248,7 +248,7 @@ class Cache
 		
 		// Anything in the file cache system..?
 		
-		if($group) return array($result, $groups);
+		if($group) return [$result,$groups];
 		return $result;
 	}
 	/*
@@ -348,7 +348,7 @@ class Cache
 			$str = "<?php\nif(!defined('HADRON_START')) die('You\'re not supposed to be here');\n";
 			if(is_array($data))
 			{
-				$str .= "\$cached_data = array();\n";
+				$str .= "\$cached_data = [];\n";
 				foreach($data as $key => $value)
 				{
 					if(is_array($value))
