@@ -10,6 +10,10 @@ Add more unit tests.
 Test and improve the template compilation system.
 Test and complete the multi-threading system.
 Use the main language and database classes in the installer instead of it having it's own.
+Test and improve the asynchronous query system.
+MAJOR PROJECT: Revamp the control panel.
+Figure out what to do about super_join.
+We might need to update the database interface.
 
 Bugs:
 Avatar updating is broken.
