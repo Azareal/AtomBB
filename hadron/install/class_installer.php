@@ -4,7 +4,7 @@
 *	Hadron Framework: Installation Class
 *	Created by Azareal.
 *	Licensed under the terms of the GPLv3.
-*	Copyright Azareal (c) 2013 - 2017.
+*	Copyright Azareal (c) 2013 - 2017
 *
 **/
 
@@ -63,7 +63,7 @@ class Installer
 	public function init()
 	{
 		if(file_exists(HADRON_INSTALL_BASE."/lock")) { $this->events['lock']($this->tmpls); exit; }
-		if(!extension_loaded("mysql") && !extension_loaded("mysqli")) { $this->events['dbexts']($this->tmpls); exit; }
+		if(!extension_loaded("mysqli")) { $this->events['dbexts']($this->tmpls); exit; }
 	}
 	
 	public function getTemplates()
@@ -137,15 +137,9 @@ class Installer
 	{
 		if(is_writeable($path) || (!file_exists($path) && is_writeable(dirname($path))) || @chmod($path,0666))
 		{
-			// Create the file handle
 			$hd = fopen($path,"w");
-			
-			// Write to the file
-			fwrite($hd, $content);
-			
-			// Close the handle
+			fwrite($hd,$content);
 			fclose($hd);
-			
 			return true;
 		}
 		return false;

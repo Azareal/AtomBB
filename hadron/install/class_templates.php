@@ -4,7 +4,7 @@
 *	Hadron Framework: Installation System: Simple Template Class.
 *	Created by Azareal.
 *	Licensed under the terms of the GPLv3.
-*	Copyright Azareal and Hadron Framework (c) 2013 - 2017
+*	Copyright Azareal (c) 2013 - 2017
 *
 **/
 
