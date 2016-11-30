@@ -9,6 +9,7 @@ Test to see if memcached works and review it.
 Add more unit tests.
 Test and improve the template compilation system.
 Test and complete the multi-threading system.
+Use the main language and database classes in the installer instead of it having it's own.
 
 Bugs:
 Avatar updating is broken.
