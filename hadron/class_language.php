@@ -71,13 +71,13 @@ class Language
 	
 	function get($name)
 	{
-		if(!isset($this->data[$name])) throw new \Exception("Unable to find the '{$name}' language string.");
+		if(!isset($this->data[$name])) return '{$lang_'.name.'}';
 		return $this->data[$name];
 	}
 	
 	function __get($name)
 	{
-		if(!isset($this->data[$name])) throw new \Exception("Unable to find the '{$name}' language string.");
+		if(!isset($this->data[$name])) return '{$lang_'.name.'}';
 		return $this->data[$name];
 	}
 	
